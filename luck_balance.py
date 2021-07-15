@@ -16,18 +16,12 @@ import sys
 #
 
 def luckBalance(k, contests):
-    c = sm = z = 0
-    for i in contests:
-        if i[1]: z+=1
-    if k >= z: k = 0
-    else: k = z - k
-    for i in sorted(contests):
-        sm += i[0]
-        if i[1] and k:
-            c += i[0]
-            k -= 1
-    print(sm)
-    return sm - c * 2
+    luck = 0
+    for i,j in sorted(contests, reverse = True):
+        if j and not k: luck -= (2 * i)
+        if j and k: k -= 1
+        luck += i
+    return luck
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
