@@ -17,11 +17,29 @@ import sys
 #
 
 def twoArrays(k, A, B):
-    A.sort()
-    B.sort(reverse = True)
+
+    # naive approach O(nlogn)
+    # A.sort()
+    # B.sort(reverse = True)
+    # for i in range(len(A)):
+    #     if A[i]+B[i] < k: return 'NO'
+    # return 'YES'
+
+
+
+    # O(n) approach
+
+    summ = 0
     for i in range(len(A)):
-        if A[i]+B[i] < k: return 'NO'
-    return 'YES'
+        if A[i] > k: summ += k
+        else: summ += A[i]
+    for i in range(len(A)):
+        if B[i] > k: summ += k
+        else: summ += B[i]
+    if summ >= len(A) * k: return 'YES'
+    return 'NO'
+
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
