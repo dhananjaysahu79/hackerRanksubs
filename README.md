@@ -1,3 +1,3 @@
-# HackerRanks submissions
+# HackerRank submissions
 
 All Optimised approach
